@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('/ping', function (Request $request) {
+    return response()->json([
+      'status' => '200',
+      'response' => 'PONG'
+    ]);
+});
