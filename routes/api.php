@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\NewsItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,14 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/ping', function (Request $request) {
+    activity()
+        ->performedOn(NewsItem::create())
+        ->causedBy($request->user())
+        ->withProperties(['customProperty' => 'customValue'])
+        ->log('Look, I logged something');
+
     return response()->json([
       'status' => '200',
-      'response' => 'PONG'
+      'response' => 'PONG',
     ]);
 });
