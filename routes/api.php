@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\NewsItem;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/user', function (Request $request) {
 Route::get('/ping', function (Request $request) {
     activity()
         ->performedOn(NewsItem::create())
-        ->causedBy($request->user())
+        ->causedBy(User::findOrFail(1))
         ->withProperties(['customProperty' => 'customValue'])
         ->log('Look, I logged something');
 
