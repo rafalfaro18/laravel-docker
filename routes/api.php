@@ -18,6 +18,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/ping', function (Request $request) {
+    Activity::log('Pong was pingged.');
     return response()->json([
       'status' => '200',
       'response' => 'PONG'
