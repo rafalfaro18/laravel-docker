@@ -21,7 +21,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/ping', function (Request $request) {
     activity()
-        ->log('Look, I logged something');
+        ->log('Pong was pingged');
 
     return response()->json([
       'status' => '200',
