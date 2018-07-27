@@ -21,9 +21,6 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/ping', function (Request $request) {
     activity()
-        ->performedOn(NewsItem::create())
-        ->causedBy(User::findOrFail(1))
-        ->withProperties(['customProperty' => 'customValue'])
         ->log('Look, I logged something');
 
     return response()->json([
